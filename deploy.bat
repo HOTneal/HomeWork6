@@ -1,10 +1,10 @@
 echo Глобальная настйрока переменных, достаточно выполнить 1 раз
-git config --global user.name 
-git config --global user.email 
+git config --global user.name HOTneal
+git config --global user.email onealvkotn@gmail.com 
 echo Добавим трекинг всех новых файлов
 git add -A
 echo Коммит всех локальных изменений, не забываем в комментарии указывать суть внесенных изменений
-git commit -a -m "comething new"
+git commit -a -m "Объеденил репозитории и добавил файлы классной работы №27"
 echo Объединяем все изменения из удаленного репозитория с локальной версией
 git pull origin master
 echo Применение коммита, мерж локальных измнений в удаленный репозиторий
