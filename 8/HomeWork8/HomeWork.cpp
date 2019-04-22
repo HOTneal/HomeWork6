@@ -10,6 +10,8 @@ unsigned char summKop;
 int raznostRub;
 unsigned char raznostKop;
 
+int MaxKop = 100;
+
 void Money::set(int newRubley, int newKopeek)
 {
 	rubley = newRubley;
@@ -30,8 +32,8 @@ void Money::addMoney(Money& someMoney)
 	summRub = rubley + someMoney.rubley;
 	summKop = kopeek + someMoney.kopeek;
 
-	if (summKop >= 60) {
-		summKop -= 60;
+	if (summKop >= MaxKop) {
+		summKop -= MaxKop;
 		summRub += 1;
 	}
 
@@ -40,8 +42,8 @@ void Money::addMoney(Money& someMoney)
 
 void Money::withdrawMoney(Money& someMoney)
 {
-	if (kopeek > 60 || someMoney.kopeek > 60) {
-		cout << "Error: kopeek could not be less 60";
+	if (kopeek > MaxKop || someMoney.kopeek > MaxKop) {
+		cout << "Error: kopeek could not be less " + MaxKop;
 		return;
 	}
 
@@ -53,8 +55,8 @@ void Money::withdrawMoney(Money& someMoney)
 	raznostRub = rubley - someMoney.rubley;
 	raznostKop = kopeek - someMoney.kopeek;
 
-	if (raznostKop >= 60) {
-		raznostKop -= 256 - 60;
+	if (raznostKop >= MaxKop) {
+		raznostKop -= 256 - MaxKop;
 		raznostRub -= 1;
 	}
 	
@@ -66,7 +68,7 @@ int main()
 	Money cash1;
 	Money cash2;
 
-	cash1.set(80, 60);
+	cash1.set(80, 100);
 	cash2.set(35, 20);
 
 	cash1.addMoney(cash2);
