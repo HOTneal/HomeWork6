@@ -7,7 +7,7 @@ private:
 public:
 	void set(int newRubley, int newKopeek);
 	int getRubley();
-	unsigned char getKopeek();
+	int getKopeek();
 
 	Money operator+(Money &plusCash);
 	Money operator-(Money & minusCash);

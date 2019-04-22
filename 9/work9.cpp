@@ -8,6 +8,8 @@
 
 using namespace std;
 
+int maxMinute = 60;
+
 void Time::setTime(long newHours, unsigned char newMinutes)
 {
 	hours = newHours;
@@ -17,7 +19,7 @@ long Time::getHours()
 {
 	return this->hours;
 }
-unsigned char Time::getMinutes()
+long Time::getMinutes()
 {
 	return this->minutes;
 }
@@ -26,9 +28,9 @@ Time Time::operator+(Time &plusTime)
 	Time result;
 	result.hours=this->hours+plusTime.hours;
 	result.minutes=this->minutes+plusTime.minutes;
-	if (result.minutes >= 60){
+	if (result.minutes >= maxMinute){
 		result.hours++;
-		result.minutes -= 60;
+		result.minutes -= maxMinute;
 	}
 	return result;
 }
@@ -37,9 +39,9 @@ Time Time::operator-(Time & minusTime)
 	Time result;
 	result.hours=this->hours-minusTime.hours;
 	result.minutes=this->minutes-minusTime.minutes;
-	if (result.minutes >= 60){
+	if (result.minutes >= maxMinute){
 		result.hours--;
-		result.minutes = 256 - 60;
+		result.minutes = maxMinute;
 	}
 	return result;
 }
@@ -52,11 +54,11 @@ Time Time::operator*(int multTimes)
 	result.hours=this->hours * multTimes;
 	result.minutes=this->minutes * multTimes;
 
-	resMin = result.minutes / 60;
+	resMin = result.minutes / maxMinute;
 	result.hours += (int)resMin;
 
-	while(result.minutes >= 60)
-		result.minutes -= 60;
+	while(result.minutes >= maxMinute)
+		result.minutes -= maxMinute;
 
 	return result;
 }

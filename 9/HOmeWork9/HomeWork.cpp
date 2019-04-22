@@ -4,12 +4,6 @@
 
 using namespace std;
 
-int summRub;
-unsigned char summKop;
-
-int raznostRub;
-unsigned char raznostKop;
-
 int MaxKop = 100;
 
 void Money::set(int newRubley, int newKopeek)
@@ -23,10 +17,9 @@ int Money::getRubley()
 	return this->rubley;
 }
 
-unsigned char Money::getKopeek() {
+int Money::getKopeek() {
 	return this->kopeek;
 }
-
 
 Money Money::operator+(Money &plusCash)
 {
@@ -47,7 +40,7 @@ Money Money::operator-(Money & minusCash)
 	result.kopeek = this->kopeek - minusCash.kopeek;
 	if (result.kopeek >= MaxKop) {
 		result.rubley--;
-		result.kopeek = 256 - MaxKop;
+		result.kopeek = MaxKop;
 	}
 	return result;
 }
