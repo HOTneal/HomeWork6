@@ -39,16 +39,15 @@ Time Time::operator-(Time & minusTime)
 	Time result;
 	result.hours=this->hours-minusTime.hours;
 	result.minutes=this->minutes-minusTime.minutes;
-	if (result.minutes >= maxMinute){
+	if (result.minutes <= 0){
 		result.hours--;
-		result.minutes = maxMinute;
+		result.minutes += maxMinute;
 	}
 	return result;
 }
 Time Time::operator*(int multTimes)
 {
 	Time result;
-	long longMult;
 	unsigned char resMin;
 
 	result.hours=this->hours * multTimes;
@@ -71,10 +70,10 @@ void Time::Result()
 int main()
 {
 	Time a, b, plus, minus, mult;
-	int valueMult = 8;
+	int valueMult = 5;
 
-	a.setTime(5,59);
-	b.setTime(2,30);
+	a.setTime(9,30);
+	b.setTime(5,10);
 
 	plus=a+b;
 	minus=a-b;

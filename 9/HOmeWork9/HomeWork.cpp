@@ -38,9 +38,9 @@ Money Money::operator-(Money & minusCash)
 	Money result;
 	result.rubley = this->rubley - minusCash.rubley;
 	result.kopeek = this->kopeek - minusCash.kopeek;
-	if (result.kopeek >= MaxKop) {
+	if (result.kopeek <= 0) {
 		result.rubley--;
-		result.kopeek = MaxKop;
+		result.kopeek += MaxKop;
 	}
 	return result;
 }
@@ -73,8 +73,8 @@ int main()
 	Money cash1, cash2, plusCash, minusCash, multCash;
 	int multValue = 5;
 
-	cash1.set(80, 100);
-	cash2.set(35, 20);
+	cash1.set(80, 40);
+	cash2.set(35, 90);
 
 	plusCash = cash1 + cash2;
 	minusCash = cash1 - cash2;
