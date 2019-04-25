@@ -4,7 +4,7 @@ git config --global user.email onealvkotn@gmail.com
 echo Добавим трекинг всех новых файлов
 git add -A
 echo Коммит всех локальных изменений, не забываем в комментарии указывать суть внесенных изменений
-git commit -a -m "Izmenil znachenie 60 kopeek na 100 v 8 dom.zadanii. Dobavil 9 rabotu i 9 dom.zadanie"
+git commit -a -m "Add 10 work"
 echo Объединяем все изменения из удаленного репозитория с локальной версией
 git pull origin master
 echo Применение коммита, мерж локальных измнений в удаленный репозиторий
