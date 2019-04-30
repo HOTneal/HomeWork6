@@ -18,5 +18,5 @@ public:
 	bool operator==(Time & minusTimes);
 	bool operator!=(Time & minusTimes);
 	void Result();
-	void ResultComprasion(Time a, Time b, std::string valueComp); // вывод для операторов сравнения
+	void ResultComprasion(Time a, Time b, std::string valueComp); // vivod dlya operator sravneniya
 };
