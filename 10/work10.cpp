@@ -2,8 +2,9 @@
 //
 
 #pragma once
-#include "stdafx.h"
+#include "pch.h"
 #include <iostream>
+#include <string>
 #include "Time.h"
 
 using namespace std;
@@ -65,20 +66,77 @@ Time Time::operator*(int multTimes)
 bool Time::operator<(Time & minusTimes)
 {
 	if (this->hours < minusTimes.hours)
-		return true;
-	else if(this->hours == minusTimes.hours)
-		return false;
+		return 1;
+	else if (this->hours == minusTimes.hours) {
+		if (this->minutes < minusTimes.minutes)
+			return 1;
+		else if (this->minutes == minusTimes.minutes)
+			return 0;
+		else 
+			return 0;
+	}
 	else 
-		return false;
+		return 0;
 }
 bool Time::operator>(Time & minusTimes)
 {
 	if (this->hours > minusTimes.hours)
-		return true;
-	else if(this->hours == minusTimes.hours)
-		return false;
-	else 
-		return false;
+		return 1;
+	else if (this->hours == minusTimes.hours) {
+		if (this->minutes > minusTimes.minutes)
+			return 1;
+		else if (this->minutes == minusTimes.minutes)
+			return 0;
+		else
+			return 0;
+	}
+	else
+		return 0;
+}
+
+bool Time::operator<=(Time & minusTimes)
+{
+	if (this->hours <= minusTimes.hours) {
+		if (this->hours == minusTimes.hours) {
+			if (this->minutes <= minusTimes.minutes)
+				return 1;
+			else
+				return 0;
+		}
+		else
+			return 1;
+	}
+	else
+		return 0;
+}
+bool Time::operator>=(Time & minusTimes)
+{
+	if (this->hours >= minusTimes.hours) {
+		if (this->hours == minusTimes.hours) {
+			if (this->minutes >= minusTimes.minutes)
+				return 1;
+			else
+				return 0;
+		}
+		else
+			return 1;
+	}
+	else
+		return 0;
+}
+bool Time::operator==(Time & minusTimes)
+{
+	if (this->hours == minusTimes.hours && this->minutes == minusTimes.minutes)
+		return 1;
+	else
+		return 0;
+}
+bool Time::operator!=(Time & minusTimes)
+{
+	if (this->hours != minusTimes.hours || this->minutes != minusTimes.minutes)
+		return 1;
+	else
+		return 0;
 }
 
 void Time::Result()
@@ -86,17 +144,25 @@ void Time::Result()
 	cout << this->hours << " hours " << this->minutes << " minuts" << endl; 
 }
 
+void Time::ResultComprasion(Time a, Time b, string valueComp)
+{
+	cout << endl;
+	a.Result();
+	cout << " " << valueComp << " ";
+	b.Result();
+}
+
 
 void main()
 {
-	Time a, b, plus, minus, mult;
+	Time a, b, plus, minus, mult, comprasion;
 	Time arrA[10];
 	Time arrB[10];
 
 	int valueMult = 5;
 
 	a.setTime(10,30);
-	b.setTime(9,10);
+	b.setTime(12,40);
 
 	plus=a+b;
 	minus=a-b;
@@ -106,10 +172,23 @@ void main()
 	minus.Result();
 	mult.Result();
 
-	if (a<b)
-		cout << "a<b";
-	if (a>b)
-		cout << "a>b";
+	if (a < b)
+		comprasion.ResultComprasion(a, b, "<");
+
+	if (a > b)
+		comprasion.ResultComprasion(a, b, ">");
+
+	if (a <= b)
+		comprasion.ResultComprasion(a, b, "<=");
+
+	if (a >= b)
+		comprasion.ResultComprasion(a, b, ">=");
+
+	if (a == b)
+		comprasion.ResultComprasion(a, b, "==");
+
+	if (a != b)
+		comprasion.ResultComprasion(a, b, "!=");
 
 	cout << endl << endl;
 
@@ -154,5 +233,4 @@ void main()
 		arrB[i].Result();
 	}
 
-		getchar();
 }

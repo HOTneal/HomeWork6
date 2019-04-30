@@ -13,6 +13,10 @@ public:
 	Time operator*(int multTimes);
 	bool operator<(Time & minusTimes);
 	bool operator>(Time & minusTimes);
+	bool operator<=(Time & minusTimes);
+	bool operator>=(Time & minusTimes);
+	bool operator==(Time & minusTimes);
+	bool operator!=(Time & minusTimes);
 	void Result();
-	void ResultBool();
+	void ResultComprasion(Time a, Time b, std::string valueComp); // вывод для операторов сравнения
 };
