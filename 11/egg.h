@@ -4,9 +4,12 @@
 #else
 #define EGG_API __declspec(dllimport)
 #endif
-
-int size;
-int weight;
-
-extern "C" EGG_API bool breakk(std::string who);
-extern "C" EGG_API void say(std::string text);
+#include <string>
+class egg
+{
+public:
+	int size;
+	int weight;
+	EGG_API bool breakk(std::string who);
+	void say(std::string text);
+};
